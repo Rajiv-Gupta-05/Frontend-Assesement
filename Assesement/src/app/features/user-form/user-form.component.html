@@ -1,0 +1,47 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <h2>Add New User</h2>
+    
+    <div class="loading-overlay" *ngIf="isSubmitting">
+      <div class="spinner"></div>
+      <p>Adding user...</p>
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" [class.blur]="isSubmitting">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Enter full name" />
+        <div class="error" *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+          Name is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="Enter email" />
+        <div class="error" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+          Valid email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role">
+          <option value="Admin">Admin</option>
+          <option value="Editor">Editor</option>
+          <option value="Viewer">Viewer</option>
+        </select>
+        <div class="error" *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched">
+          Role is required
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()" [disabled]="isSubmitting">Cancel</button>
+        <button type="submit" class="btn-submit" [disabled]="userForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Adding...' : 'Add User' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

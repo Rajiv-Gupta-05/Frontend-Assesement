@@ -1,0 +1,151 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #383838;
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 12px;
+
+  p {
+    margin-top: 15px;
+    font-weight: 500;
+    color: #1c4980;
+  }
+}
+
+.spinner {
+  border: 4px solid rgba(28, 73, 128, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #1c4980;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.blur {
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #383838;
+    font-weight: 500;
+  }
+
+  input, select {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    
+    &:focus {
+      outline: none;
+      border-color: #1c4980;
+    }
+  }
+
+  .error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+
+  button {
+    height: 48px;
+    padding: 0 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &.btn-cancel {
+      background: #eee;
+      color: #383838;
+      
+      &:hover {
+        background: #ddd;
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    &.btn-submit {
+      background: #1c4980;
+      color: white;
+      
+      &:hover {
+        background: #14355d;
+      }
+
+      &:disabled {
+        background: #90a6c0;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
